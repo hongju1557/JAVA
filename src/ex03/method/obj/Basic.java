@@ -39,31 +39,54 @@ public class Basic {
 
     //형변환
     //정수 cm/kg
+    // public static String getBmiStr(int h, int w) {
+    //     String bmistr = "";
+    //     double bmi = 0.0;
+    //     //신체질량지수(BMI)
+    //     //bmi = 체중 / (신장(m)*신장(m))
+    //     //당신의 키 , 몸무게는 , bmi , 정상입니다.
+    //     // 소수점 2자리까지 출력한다
+
+        
+    //     bmi = w / ((double)h/100*(double)h/100);
+        
+    //     String res = "";
+    //     //+ bmiTostr(bmi:double):String
+    //     //18.5 미만 저체중, 22.9 이하 정상, 24.9 이하 비만전단계 , 나머지 비만
+    //     if(bmi<18.5){res = "저체중";}
+    //     //문장의 끝은 ;, 문자열은 ""로 감싼다
+    //     else if (bmi<=22.9){res = "정상";}
+    //     else if (bmi<=24.9){res = "비만전단계";}
+    //     else{res = "비만";}
+
+    //     bmistr = """
+    //         키 : %dcm, 몸무게 : %dkg, bmi : %f, %s 입니다. 
+    //         """.formatted(h,w,bmi,res);
+    //         return bmistr;
+    // }
     public static String getBmiStr(int h, int w) {
-        String bmistr = "";
-        double bmi = 0.0;
-        //신체질량지수(BMI)
-        //bmi = 체중 / (신장(m)*신장(m))
-        //당신의 키 , 몸무게는 , bmi , 정상입니다.
-        // 소수점 2자리까지 출력한다
 
-        
-        bmi = w / ((double)h/100*(double)h/100);
-        
-        String res = "";
-        //+ bmiTostr(bmi:double):String
-        //18.5 미만 저체중, 22.9 이하 정상, 24.9 이하 비만전단계 , 나머지 비만
-        if(bmi<18.5){res = "저체중";}
-        //문장의 끝은 ;, 문자열은 ""로 감싼다
-        else if (bmi<=22.9){res = "정상";}
-        else if (bmi<=24.9){res = "비만전단계";}
-        else{res = "비만";}
+    double bmi = w / ((double) h / 100 * (double) h / 100);
 
-        bmistr = """
-            키 : %dcm, 몸무게 : %dkg, bmi : %f, %s 입니다. 
-            """.formatted(h,w,bmi,res);
-            return bmistr;
+    String res = bmiToStr(bmi);   // <-- 여기서 호출
+
+    return """
+        키 : %dcm, 몸무게 : %dkg, bmi : %.2f, %s 입니다.
+        """.formatted(h, w, bmi, res);
+}
+    public static String bmiToStr(double bmi) {
+
+    if (bmi < 18.5) {
+        return "저체중";
+    } else if (bmi <= 22.9) {
+        return "정상";
+    } else if (bmi <= 24.9) {
+        return "비만전단계";
+    } else {
+        return "비만";
     }
+}
+
     public static void main(String[] args) {
         double bmi = getBmi(1.63,125.5);
         System.out.println(bmi);
