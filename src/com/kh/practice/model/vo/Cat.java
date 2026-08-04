@@ -25,7 +25,7 @@ public class Cat extends Animal {
 
     @Override
     public void speak(){
-        System.out.println("이이익!이이이익!");
+        System.out.println(location + " 에 서식하며 색은 " +color+"입니다.");
     }
     
 }
