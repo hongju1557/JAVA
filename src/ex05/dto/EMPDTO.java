@@ -14,7 +14,7 @@ public class EMPDTO {
     }
     @Override
     public String toString(){
-        return "%s %s %s".formatted(null);
+        return "%s %s %s".formatted(empId, empName, salary);
     }
 
     public String getEmpId() {
